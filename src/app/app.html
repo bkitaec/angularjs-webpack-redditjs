@@ -1,0 +1,31 @@
+<main>
+	<div class="container" id="gallery">
+		<div class="gallery-header container">
+	    	<h1 class="text-center">Reddit Image Gallery</h1>
+		    <input 
+			    type="text" 
+			    name="search" 
+			    ng-model="searchQuery" 
+			    ng-change="app.onSearch()"
+			    placeholder="Search Image" 
+			    class="search-input"
+		    />
+		</div>		
+		 <div class="row">
+		   <div class="col-lg-4 col-sm-6" ng-repeat="image in imagesList">
+		      <div class="thumbnail-wrapper">
+		      	<a href="https://www.reddit.com{{image.data.permalink}}" target="_blank" style="background-image: url({{image.data.thumbnail}})" class="thumbnail">
+		    		<h2><span class="text-white">{{image.data.title}}</span></h2>          		  			      		
+		      	</a>
+		      </div>
+		   </div>
+		</div>
+	<div class="container">
+	  	<button ng-show="before" class="btn btn-default btn-lg btn-block" ng-click="app.prevPage()">Prev</button>
+      	<button ng-show="after" class="btn btn-default btn-lg btn-block" ng-click="app.nextPage()">Next</button>
+      	<button ng-show="noresults" class="btn btn-danger btn-lg btn-block" ng-click="app.loadTop()">NO RESULTS</button>
+    </div>
+</main>
+<footer>
+  <a ng-href="{{app.author}}"></a>
+</footer>
